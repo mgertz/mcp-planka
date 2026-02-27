@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mgertz/mcp-planka/compare/v1.0.0...v1.0.1) (2026-02-27)
+
+### Bug Fixes
+
+* update Node.js version to 20 in release workflow ([1a72cd5](https://github.com/mgertz/mcp-planka/commit/1a72cd51f1fdc1413731b60995c7d58e830f0eb5))
+* use semantic-release action for correct job outputs ([c39c97d](https://github.com/mgertz/mcp-planka/commit/c39c97db633fb95687699eb626011a189e955f85))
+
 ## 1.0.0 (2026-02-27)
 
 
