@@ -1,6 +1,6 @@
 {
   "name": "mcp-planka",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MCP server for Planka kanban board",
   "type": "module",
   "main": "dist/index.js",

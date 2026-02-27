@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/mgertz/mcp-planka/compare/v1.0.2...v1.0.3) (2026-02-27)
+
+### Bug Fixes
+
+* update Docker image tagging to include version values ([0fe0328](https://github.com/mgertz/mcp-planka/commit/0fe0328d0ee970656480dc972f5b02f6186119e2))
+
 ## [1.0.2](https://github.com/mgertz/mcp-planka/compare/v1.0.1...v1.0.2) (2026-02-27)
 
 ### Bug Fixes
