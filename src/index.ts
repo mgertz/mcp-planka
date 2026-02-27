@@ -4,7 +4,10 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { PlankaClient } from './planka/client.js';
 import { createMcpServer } from './server.js';
 
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 50 * 1024 * 1024 },
+});
 
 const PORT = parseInt(process.env.PORT ?? '3000', 10);
 const PLANKA_URL = process.env.PLANKA_URL;
@@ -30,12 +33,12 @@ try {
 }
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // Map of sessionId -> transport for active sessions
 const transports = new Map<string, StreamableHTTPServerTransport>();
 
-app.all('/mcp', async (req, res) => {
+const mcpHandler = async (req: express.Request, res: express.Response): Promise<void> => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
 
   // Reuse existing transport for this session
@@ -68,7 +71,10 @@ app.all('/mcp', async (req, res) => {
   const server = createMcpServer(plankaClient);
   await server.connect(transport);
   await transport.handleRequest(req, res, req.body);
-});
+};
+
+app.get('/mcp', mcpHandler);
+app.post('/mcp', mcpHandler);
 
 // DELETE /mcp - terminate session
 app.delete('/mcp', (req, res) => {
