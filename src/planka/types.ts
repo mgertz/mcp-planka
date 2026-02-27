@@ -34,12 +34,19 @@ export interface Label {
   updatedAt: string;
 }
 
+export interface Stopwatch {
+  startedAt: string | null;
+  total: number;
+}
+
 export interface Card {
   id: string;
   name: string;
   description: string | null;
   dueDate: string | null;
   isDueDateCompleted: boolean;
+  isSubscribed: boolean;
+  stopwatch: Stopwatch | null;
   position: number;
   boardId: string;
   listId: string;
@@ -48,8 +55,16 @@ export interface Card {
   updatedAt: string;
 }
 
+export interface CardLabel {
+  id: string;
+  cardId: string;
+  labelId: string;
+  createdAt: string;
+  updatedAt: string | null;
+}
+
 export interface CardDetails extends Card {
-  labels: Label[];
+  cardLabels: CardLabel[];
   tasks: Task[];
   attachments: Attachment[];
 }
