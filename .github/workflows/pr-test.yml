@@ -16,4 +16,4 @@ jobs:
       - name: Check last commit message for semantic release
         uses: osl-incubator/semantic-release-pr-title-check@v1.4.3
         with:
-          convention-name: conventionalcommits
+          convention-name: angular
