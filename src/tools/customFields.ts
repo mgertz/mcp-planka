@@ -9,7 +9,7 @@ export function registerCustomFieldTools(server: McpServer, client: PlankaClient
       description: 'Create a custom field group on a board (groups contain one or more custom fields)',
       inputSchema: {
         boardId: z.string().describe('The board ID'),
-        name: z.string().describe('Task list name'),
+        name: z.string().describe('Custom field group name'),
         position: z.number().optional().describe('Position of the group (optional)'),
       },
     },
