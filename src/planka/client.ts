@@ -6,6 +6,7 @@ import type {
   List,
   Card,
   CardDetails,
+  CardLabel,
   Comment,
   Label,
   TaskList,
@@ -174,7 +175,7 @@ export class PlankaClient {
     const data = res.data;
     return {
       ...data.item,
-      labels: data.included?.cardLabels ?? [],
+      cardLabels: (data.included?.cardLabels ?? []) as CardLabel[],
       tasks: data.included?.tasks ?? [],
       attachments: data.included?.attachments ?? [],
     };
@@ -203,7 +204,7 @@ export class PlankaClient {
 
   async updateCard(
     cardId: string,
-    data: Partial<Pick<Card, 'name' | 'description' | 'dueDate' | 'isDueDateCompleted' | 'position'>>
+    data: Partial<Pick<Card, 'name' | 'description' | 'dueDate' | 'isDueDateCompleted' | 'isSubscribed' | 'stopwatch' | 'position'>>
   ): Promise<Card> {
     await this.ensureAuth();
     const res = await this.http.patch(`/api/cards/${cardId}`, data);
@@ -292,16 +293,10 @@ export class PlankaClient {
     form.append('file', blob, filename);
     form.append('type', 'file');
     form.append('name', filename);
-    const res = await fetch(`${this.baseUrl}/api/cards/${cardId}/attachments`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${this.token}` },
-      body: form,
+    const res = await this.http.post(`/api/cards/${cardId}/attachments`, form, {
+      headers: { 'Content-Type': undefined },
     });
-    if (!res.ok) {
-      throw new Error(`Upload failed: ${res.status} ${res.statusText}`);
-    }
-    const data = await res.json() as { item: Attachment };
-    return data.item;
+    return res.data.item;
   }
 
   async uploadAttachmentBase64(cardId: string, base64Content: string, filename: string, mimeType?: string): Promise<Attachment> {
