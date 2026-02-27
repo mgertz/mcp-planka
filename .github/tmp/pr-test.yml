@@ -1,0 +1,19 @@
+name: PR Test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    
+jobs:
+  verify-pr-title:
+    name: Vefify PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check last commit message for semantic release
+        uses: osl-incubator/semantic-release-pr-title-check@v1.4.3
+        with:
+          convention-name: conventionalcommits  #Default: angular

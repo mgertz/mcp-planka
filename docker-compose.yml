@@ -1,0 +1,20 @@
+services:
+  mcp-planka:
+    image: mcp-planka:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - PLANKA_URL=${PLANKA_URL}
+      - PLANKA_EMAIL=${PLANKA_EMAIL}
+      - PLANKA_PASSWORD=${PLANKA_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
