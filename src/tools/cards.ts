@@ -77,7 +77,7 @@ export function registerCardTools(server: McpServer, client: PlankaClient): void
       if (isSubscribed !== undefined) data.isSubscribed = isSubscribed;
       if (stopwatch !== undefined) data.stopwatch = stopwatch;
 
-      const card = await client.updateCard(cardId, data as Parameters<typeof client.updateCard>[1]);
+      const card = await client.updateCard(cardId, data);
       return {
         content: [{ type: 'text', text: JSON.stringify(card, null, 2) }],
       };
