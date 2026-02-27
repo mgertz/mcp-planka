@@ -9,11 +9,7 @@ jobs:
     name: Verify PR Title
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Check last commit message for semantic release
-        uses: osl-incubator/semantic-release-pr-title-check@v1.4.3
-        with:
-          convention-name: angular
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
