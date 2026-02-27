@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/mgertz/mcp-planka/compare/v1.0.1...v1.0.2) (2026-02-27)
+
+### Bug Fixes
+
+* update release workflow to correctly handle GitHub token and exit codes ([73b551c](https://github.com/mgertz/mcp-planka/commit/73b551c9bcc46afffda3b6ff4aa850c4700e9be8))
+
 ## [1.0.1](https://github.com/mgertz/mcp-planka/compare/v1.0.0...v1.0.1) (2026-02-27)
 
 ### Bug Fixes
