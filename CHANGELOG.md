@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/mgertz/mcp-planka/compare/v1.0.3...v1.0.4) (2026-02-28)
+
+### Bug Fixes
+
+* changed default port from 3000 to 25478 ([#2](https://github.com/mgertz/mcp-planka/issues/2)) ([9f1109e](https://github.com/mgertz/mcp-planka/commit/9f1109e50dbae7eb10f106fca7c6f8b81f9162d1))
+
 ## [1.0.3](https://github.com/mgertz/mcp-planka/compare/v1.0.2...v1.0.3) (2026-02-27)
 
 ### Bug Fixes
