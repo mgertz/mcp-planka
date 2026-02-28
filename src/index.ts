@@ -9,7 +9,7 @@ const upload = multer({
   limits: { fileSize: 50 * 1024 * 1024 },
 });
 
-const PORT = parseInt(process.env.PORT ?? '3000', 10);
+const PORT = parseInt(process.env.PORT ?? '25478', 10);
 const PLANKA_URL = process.env.PLANKA_URL;
 const PLANKA_EMAIL = process.env.PLANKA_EMAIL;
 const PLANKA_PASSWORD = process.env.PLANKA_PASSWORD;
