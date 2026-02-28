@@ -39,8 +39,8 @@ PLANKA_URL=https://your-planka-instance.example.com
 PLANKA_EMAIL=your@email.com
 PLANKA_PASSWORD=yourpassword
 
-# External port (container always runs on 3000 internally)
-PORT=3000
+# External port (container always runs on 25478 internally)
+PORT=25478
 ```
 
 ### 2. Start
@@ -52,7 +52,7 @@ docker compose up -d
 ### 3. Connect to Claude Code
 
 ```bash
-claude mcp add planka --transport http http://localhost:3000/mcp
+claude mcp add planka --transport http http://localhost:25478/mcp
 ```
 
 That's it — Claude can now manage your Planka boards.
